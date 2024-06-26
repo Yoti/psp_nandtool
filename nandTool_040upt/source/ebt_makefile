@@ -1,0 +1,29 @@
+TARGET = nandtool
+OBJS = main.o other.o dump.o write.o idstore.o usb.o lflash.o nt_bridge.o
+
+# Use the kernel's small inbuilt libc
+#USE_KERNEL_LIBC = 1
+# Use only kernel libraries
+#USE_KERNEL_LIBS = 1
+
+INCDIR = ./graphics/ ./ntbridge/
+CFLAGS = -O2 -G2 -Wall -fno-builtin-printf -DRELVER=\"$(RELVER)\"
+#CFLAGS = -O0 -G0 -g -Wall
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS = $(CFLAGS)
+
+#-lm  -lpspgum
+LIBDIR = ./graphics/
+LIBS =  -lpspgraphics -lpspgu -lpspusb -lpspusbstor -lpsppower
+LDFLAGS = 
+
+PSP_FW_VERSION = 400
+
+BUILD_PRX = 1
+
+EXTRA_TARGETS = EBOOT.PBP
+PSP_EBOOT_ICON = icon0.PNG
+PSP_EBOOT_TITLE = NandTool $(RELVER)
+
+PSPSDK=$(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak

@@ -1,0 +1,9 @@
+I didn't put it up on the board but I want to share the todo list... and this is a lot of work if I manage to find the time to do them all
+- polish pseudo gui (add graphical reps of button images xo etc)
+- safe test nand function (seek ecc errors, do a simple chkdsk to see partitions are intact and no blocks repeat)
+- dangerous test nand function (use nandTest functions to do full block checks - best used on questionable PSP where hardware issues are suspected)
+- get actual fw version from IPL (can tell if it is m33 or not, but not minor revision)
+- mirrored writes (does not erase and overwrite blocks that already contain data that is being written)
+- ini parser (auto start to elf menu, set elf menu mode, set default path, set colors, ?png background image?, logging enable, change O/X buttons function)
+- R/L shoulder in elf menu (change between elf folder and psp/game/(eboot), psp/game150/(eboot), psp/game3xx/(eboot))
+- ECC testing to all dump/write functions, verify data before writing to disk/nand

@@ -1,0 +1,76 @@
+version history:
+-----------------
+0.5a1()
+	- slightly altered lflash handling of required empty blocks
+0.4UPT (Aug 28 2008)
+	- expanded iaccept location to include (relative path/iaccept), (ms0:/kd/iaccept), (ms0:/elf/iaccept)
+	*bug* usbhost - you may have to create the dump dir with the exe manually, mkdir has permission errors with 4.x firmware
+	*fixme* elf loading does not work in 4.x firmwares, parse ms:/PSP/GAME/ directories for eboots instead when run under 4xx kernel.
+0.4NEO (Aug 20 2008) 
+	- fixed ids dump/restore messages leaving a blank line at the bottom sometimes
+	- made fade in/out consistent in menu (no fade ins)
+	- created logical flash menu option and moved repartition
+	- added partition integrity check to the logical flash menu
+	- added splash screens (main splash and warning screen, both can be disabled by the iaccept file)
+	- added consistent boxes to menu selections
+	- fixed info page to allow O to return
+0.4 alpha 10 (Aug 12 2008)
+	- corrected usb/usbhost mounting to work with the kernel prx and 4.01m33-2
+0.4 alpha 9
+	- separated kernel functions into ntbridge.prx (prep for eboot version)
+0.4 alpha 7
+	- hold square while booting to see USB messages instead of default halt on error
+	- adden in various full screen fades (not 100% yet)
+0.4 alpha 6
+	- added fade effects to gfx rep.
+	- corrected a bug in elf menu (launching nothing when no elf were present)
+	- corrected a bug in elf menu that did not display "file launching" info
+0.4 alpha 5 (released to hellcat)
+	- fixed a bug that did not allow cancelling of usbhost connecting
+	- format partitions disables scramble for FAT PSP (for custom firmware)
+0.4 alpha 4 test only
+	- all dialogs should be fully functional now, slim idstore should dump/write properly
+0.4 ()
+	- added lines and boxes (eye candy)
+	- corrected a bug that would not allow proper selection of files after 23 (increased to 26 onscreen)
+	- fixed a bug where overwrite was not possible when dumping
+	- added progress bar
+	- added support for usbhostfs
+	- moved usb/usbhost prx required location to ms:/elf/prx
+	- underscore is displayed as a space in ELF and nand dump selection menus
+	- file extension is no longer displayed for elf or nand images
+	- key dumping folder name increment is now more like nand dump increment (automatic though)
+0.3 BETA (Dec 5 2007)
+	- disable power switch while NAND read/write functions are being processed
+	- undocumented method to attempt to ignore bad blocks when writing to NAND
+	- dump/write methods redone, base directory is now ms0:/nandTool_dumps/ instead of root directory
+		no longer relies on specific file names
+		write menu will only show files with the correct size for the hardware
+		more than the specific number of files can be utilized
+		dumper adds relevant info to filename to try and make it unique
+	- identifies PSP version
+	- added info to main menu, displays info collected at app boot
+	- MS to USB mounting via select key in the main menu
+	- idstore dump to key files (slim and fat)
+	- creating a file with the correct name along side the elf will auto skip the warning screen (see warning screen for the file name)
+	- integrated ELF loader
+	- option provided on des.cem MS installs to format all partitions
+	- logical write idstore from key files to NAND
+	- supports being a des.cem resurrection.elf replacement (quit is replaced by shutdown in this case)
+
+0.2 (Nov 4 2007)
+	- logical format of flash corrected to allow unused/empty blocks where needed to support lflashfmt on slim
+	- raw writing now checks (and repairs) bad block marks in spare data so new bad blocks will not be flashed due to faulty dumps
+	 < bugs solved in 0.2 >
+	- lflash format and subsequent install of 3.71 using des.cem V3 on slim will result in trashed partitions and brick
+	- rewriting a "phat" psp full image will result in 30 block with ECC data when the original dump has no ECC data
+	- writing ofw or slim when bad blocks were present resulted in unbootable PSP
+
+0.1a (Nov 1 2007)
+	- corrected bugs with writing nand
+	- bad blocks were not skipped properly causing slim or ofw not to work on boot
+	- partial blocks written as original (solves ECC on pages which had none before, chiefly idstore index)
+	- typo cause lflash only option to write idstore as well
+
+0.1 (Oct 16 2007)
+	- initial release
